@@ -23,16 +23,29 @@ const asciiHeart = [
     "     ⠉⢿⣿⣿⣿⠟⠋⠀",
     "       ⠙⠻⠁"
 ]
+function animateByChart(ms) {
+    let delay = 0
+    for (let i = 0; i < asciiHeart.length; i++) {
+        for (let j = 0; j < asciiHeart[i].length; j++) {
+        
+            setTimeout(() => {
+                process.stdout.write(`${asciiHeart[i][j]}`)
+                if (j === asciiHeart[i].length - 1) {
+                    console.log('');
+                }
 
-for (let i = 0; i < asciiHeart.length; i++ ) {
-   console.log(asciiHeart[i]);
-    
+            }, delay += ms);
+        }
+
+    }
 }
 
-
-
-for (let i = 0; i < asciiHeart.length; i++ ) {
-setTimeout(() => {
-     // console.log(asciiHeart[i]);
-    }, i * 1000);
+function animateByLine() {
+    for (let i = 0; i < asciiHeart.length; i++) {
+        setTimeout(() => {
+            console.log(asciiHeart[i]);
+        }, i * 1000);
+    }
 }
+//animateByLine()
+animateByChart(100)
